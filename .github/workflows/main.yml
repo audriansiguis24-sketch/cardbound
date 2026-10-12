@@ -1,24 +1,23 @@
 name: Build Cardbound Android APK
 
 on:
-workflow_dispatch:
-push:
-branches:
-- main
+  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
-build:
-runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v4
 
-steps:
-  - name: Checkout project
-    uses: actions/checkout@v4
-
-  - name: Build APK with Godot
-    uses: firebelley/godot-export@v6
-    with:
-      godot-version: 4.4.1
-      export-templates: true
-      presets: Android
-      relative-project-path: ./
-      archive-artifacts: true
+      - name: Build APK with Godot
+        uses: firebelley/godot-export@v6
+        with:
+          godot-version: 4.4.1
+          export-templates: true
+          presets: Android
+          relative-project-path: ./
+          archive-artifacts: true
